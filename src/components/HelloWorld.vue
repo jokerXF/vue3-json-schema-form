@@ -103,12 +103,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-
+import { defineComponent, PropType } from 'vue'
+interface Config {
+  name: string
+}
 export default defineComponent({
   name: 'HelloWorld',
   props: {
-    msg: String,
+    msg: String as PropType<string>,
+    config: {
+      type: Object as PropType<Config>,
+      required: true,
+    },
+  },
+  mounted() {
+    console.log(this.config.name)
   },
 })
 </script>
